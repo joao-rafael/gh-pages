@@ -1,11 +1,74 @@
-.app {
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 0 1rem;
+.wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
 
-  .card-row {
+  .app {
+    max-width: 1080px;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0 1rem;
+
+    header {
+      margin-top: 140px;
+
+      img {
+        border-radius: 200px;
+        border: 5px solid #2D54DF;
+        height: 134px;
+        width: 134px;
+      }
+
+      .app__heading {
+        margin-top: 21px;
+        font-weight: 900;
+        font-size: 36px;
+        color: #2D54DF;
+        margin-bottom: 24px;
+      }
+    }
+
+    .app__text {
+      font-size: 20px;
+      font-weight: medium;
+      margin-bottom: 30px;
+    }
+
+    .card-row {
+      width: 1080px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      app-card {
+        margin: 10px;
+        flex: 1 1 0px;
+
+        &:first-of-type {
+          margin-left: 0px;
+        }
+
+        &:last-of-type {
+          margin-right: 0px;
+        }
+      }
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+
+  &::before {
+    top: 0;
+    left: 0;
+    border-top: 50px solid #ff0000;
+    border-right: 50px solid transparent;
   }
 }
