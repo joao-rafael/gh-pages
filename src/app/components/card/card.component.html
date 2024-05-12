@@ -1,10 +1,13 @@
-<mat-card class="card">
-  <mat-card-header class="card__header">
+<a [href]="link">
+  <mat-card class="card">
+    <mat-card-header class="card__header">
+      <img [src]="imageUrl">
+    </mat-card-header>
+    <mat-card-content class="card__content">
+      <h2>
+        {{ title }}
+      </h2>
+    </mat-card-content>
+  </mat-card>
 
-  </mat-card-header>
-  <mat-card-content>
-    <h2>
-      {{ title }}
-    </h2>
-  </mat-card-content>
-</mat-card>
+</a>

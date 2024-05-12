@@ -4,6 +4,8 @@
   position: relative;
 
   .app {
+    padding: 0px 10px;
+    width: calc(100% - 20px);
     max-width: 1080px;
     height: 100%;
     display: flex;
@@ -19,11 +21,13 @@
         border: 5px solid #2D54DF;
         height: 134px;
         width: 134px;
+        object-fit:cover;
       }
 
       .app__heading {
+        font-family: "Rubik", sans-serif;
         margin-top: 21px;
-        font-weight: 900;
+        font-weight: 800;
         font-size: 36px;
         color: #2D54DF;
         margin-bottom: 24px;
@@ -34,10 +38,11 @@
       font-size: 20px;
       font-weight: medium;
       margin-bottom: 30px;
+      text-decoration: none;
     }
 
     .card-row {
-      width: 1080px;
+      width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -65,10 +70,38 @@
     height: 0;
   }
 
-  &::before {
-    top: 0;
-    left: 0;
-    border-top: 50px solid #ff0000;
-    border-right: 50px solid transparent;
+  @media (max-width: 768px) {
+    .app {
+      header {
+        margin-top: 100px;
+        img {
+          height: 100px;
+          width: 100px;
+        }
+        .app__heading {
+          font-size: 24px;
+          margin-bottom: 12px;
+        }
+      }
+      .app__text {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+      .card-row {
+        flex-direction: column;
+        align-items: center;
+
+        app-card {
+          margin: 10px 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+:host {
+  a {
+    text-decoration: none;
   }
 }

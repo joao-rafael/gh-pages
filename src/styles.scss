@@ -7,25 +7,25 @@
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
 @include mat.core();
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$gh-pages-primary: mat.define-palette(mat.$indigo-palette);
-$gh-pages-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$joao-rafael-primary: mat.define-palette(mat.$indigo-palette);
+$joao-rafael-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$gh-pages-warn: mat.define-palette(mat.$red-palette);
+$joao-rafael-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$gh-pages-theme: mat.define-light-theme((
+$joao-rafael-theme: mat.define-light-theme((
   color: (
-    primary: $gh-pages-primary,
-    accent: $gh-pages-accent,
-    warn: $gh-pages-warn,
+    primary: $joao-rafael-primary,
+    accent: $joao-rafael-accent,
+    warn: $joao-rafael-warn,
   ),
   typography: mat.define-typography-config(),
   density: 0
@@ -34,9 +34,22 @@ $gh-pages-theme: mat.define-light-theme((
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($gh-pages-theme);
+@include mat.all-component-themes($joao-rafael-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Nunito Sans', "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: 'Poppins', "Helvetica Neue", sans-serif;
+    background:
+    url('assets/bottom-left.svg') bottom left,
+    url('assets/bottom-right.svg') bottom right,
+    url('assets/upper-left.svg') top left,
+    url('assets/upper-right.svg') top right;
+  background-repeat: no-repeat;
+
+  @media (max-width: 1120px) {
+    background: none;
+  }
+}
