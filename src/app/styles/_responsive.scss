@@ -1,0 +1,118 @@
+@media (max-width: 768px) {
+
+  // ============================================
+  // ESCONDE ELEMENTOS DE DESKTOP
+  // ============================================
+  .corner-svg {
+    display: none !important;
+  }
+
+  .wrapper {
+    background: transparent !important;
+  }
+
+  // ============================================
+  // MOSTRA BACKGROUND MOBILE
+  // ============================================
+  .mobile-bg {
+    display: block;
+  }
+
+  // ============================================
+  // LANG SWITCHER — MOBILE (inline, no sticky)
+  // ============================================
+  .lang-switcher {
+    position: static;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    max-width: 100%;
+    padding: 8px 1rem 8px;
+    margin-top: 0;
+    display: flex;
+    justify-content: flex-start;
+    z-index: auto;
+    background: transparent;
+
+    &__inner {
+      justify-content: flex-start;
+    }
+  }
+
+  // ============================================
+  // AJUSTES DE LAYOUT
+  // ============================================
+  .wrapper {
+    padding-top: 58px;
+
+    .app {
+      position: relative;
+      z-index: 95;
+      text-align: center;
+    }
+
+    header {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+ 
+      img {
+        height: 100px;
+        width: 100px;
+      }
+
+      .app__heading {
+        font-size: 24px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .app__text {
+      font-size: 18px;
+      margin-bottom: 20px;
+      text-align: center;
+
+      .br--hide-mobile {
+        display: none;
+      }
+    }
+
+    .card-row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      padding-bottom: 32px;
+
+      app-card .card__body {
+        padding: 0 16px;
+        height: 100%;
+      }
+    }
+  }
+
+  // ============================================
+  // FOOTER MOBILE
+  // ============================================
+  .app-footer {
+    position: static;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    width: 100%;
+    background: var(--color-primary);
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 16px 16px 0 0;
+    z-index: auto;
+    margin-top: auto;
+
+    em, strong {
+      color: #ffffff;
+    }
+  }
+}

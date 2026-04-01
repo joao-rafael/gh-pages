@@ -1,0 +1,71 @@
+:root {
+  --color-primary: #2D54DF;
+  --gradient-main: rgba(45, 84, 223, 0.35);
+  --gradient-secondary: rgba(45, 84, 223, 0.25);
+  --gradient-tertiary: rgba(45, 84, 223, 0.08);
+}
+
+// Blob 1: diagonal longa, atravessa a tela de canto a canto
+@keyframes blobMove1 {
+  0%   { transform: translate(0vw, 0vh) scale(1); }
+  20%  { transform: translate(-30vw, 20vh) scale(1.1); }
+  40%  { transform: translate(-55vw, 50vh) scale(0.9); }
+  60%  { transform: translate(-35vw, 75vh) scale(1.05); }
+  80%  { transform: translate(-10vw, 40vh) scale(0.95); }
+  100% { transform: translate(0vw, 0vh) scale(1); }
+}
+
+// Blob 2: percorre da esquerda baixo até direita cima
+@keyframes blobMove2 {
+  0%   { transform: translate(0vw, 0vh) scale(1); }
+  25%  { transform: translate(25vw, -30vh) scale(1.12); }
+  50%  { transform: translate(50vw, -60vh) scale(0.88); }
+  75%  { transform: translate(30vw, -35vh) scale(1.06); }
+  100% { transform: translate(0vw, 0vh) scale(1); }
+}
+
+// Blob 3: movimento orbital ao redor do centro
+@keyframes blobMove3 {
+  0%   { transform: translate(0vw, 0vh) scale(1); }
+  16%  { transform: translate(20vw, -15vh) scale(1.08); }
+  33%  { transform: translate(15vw, 20vh) scale(0.92); }
+  50%  { transform: translate(-20vw, 25vh) scale(1.05); }
+  66%  { transform: translate(-25vw, -10vh) scale(0.95); }
+  83%  { transform: translate(-5vw, -20vh) scale(1.03); }
+  100% { transform: translate(0vw, 0vh) scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(25px); }
+}
+
+@keyframes floatReverse {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-25px); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translateX(0px); }
+  50% { transform: translateX(30px); }
+}
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-28px); }
+}
+
+@keyframes floatBottomRight {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes scrollHorizontal {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes scrollBgX {
+  0%   { background-position-x: 0; }
+  100% { background-position-x: -100vw; }
+}

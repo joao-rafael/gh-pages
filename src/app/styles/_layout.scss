@@ -1,0 +1,148 @@
+.wrapper {
+  .app {
+    padding: 0 1rem;
+    width: calc(100% - 2rem);
+    max-width: 1080px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
+    z-index: 95;
+  }
+
+  header {
+    margin-top: 140px;
+    position: relative;
+    z-index: 110;
+
+    img {
+      border-radius: 200px;
+      border: 5px solid var(--color-primary);
+      height: 134px;
+      width: 134px;
+      object-fit: cover;
+      box-shadow: 0 10px 40px rgba(45, 84, 223, 0.15);
+    }
+
+    .app__heading {
+      font-family: "Rubik", sans-serif;
+      margin-top: 21px;
+      font-weight: 800;
+      font-size: 36px;
+      color: var(--color-primary);
+      margin-bottom: 24px;
+    }
+  }
+
+  .app__text {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 30px;
+    text-decoration: none;
+    line-height: 1.6;
+  }
+
+  .app__contractor {
+    font-weight: 400;
+    color: inherit;
+  }
+
+  .card-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+
+    app-card {
+      flex: 1 1 0px;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+  }
+}
+
+:host {
+  a {
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+}
+
+// ============================================
+// LANG SWITCHER
+// ============================================
+.lang-switcher {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: 100%;
+  max-width: 1080px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  pointer-events: none;
+  margin-top: 5px;
+
+  &__inner {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    pointer-events: all;
+  }
+
+  &__btn {
+    font-family: "Rubik", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    padding: 11px 14px;
+    border: 1.5px solid #cccccc;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #aaaaaa;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+
+    &--active {
+      color: #ffffff;
+      border-color: var(--color-primary);
+      background: var(--color-primary);
+    }
+
+    &:hover:not(.lang-switcher__btn--active) {
+      color: #666666;
+      border-color: #999999;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+  }
+}
+
+// ============================================
+// FOOTER
+// ============================================
+.app-footer {
+  position: static;
+  margin-top: auto;
+  padding: 24px 0 16px;
+  text-align: center;
+  color: var(--color-primary);
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  white-space: nowrap;
+
+  em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+}

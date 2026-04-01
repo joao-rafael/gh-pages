@@ -1,0 +1,52 @@
+<img src="./../assets/upper-left.svg" alt="" aria-hidden="true" class="corner-svg upper-left">
+<img src="./../assets/upper-right.svg" alt="" aria-hidden="true" class="corner-svg upper-right">
+<img src="./../assets/bottom-left.svg" alt="" aria-hidden="true" class="corner-svg bottom-left">
+<img src="./../assets/bottom-right.svg" alt="" aria-hidden="true" class="corner-svg bottom-right">
+
+<app-background></app-background>
+
+<div class="mobile-bg" aria-hidden="true"></div>
+
+<main class="wrapper" [@fadeIn]>
+
+  <nav class="lang-switcher" aria-label="Language selector">
+    <div class="lang-switcher__inner">
+      @for (lang of langs; track lang) {
+        <button
+          class="lang-switcher__btn"
+          [class.lang-switcher__btn--active]="i18n.activeLang() === lang"
+          (click)="setLang(lang)"
+          [attr.aria-pressed]="i18n.activeLang() === lang"
+          [attr.aria-label]="'Switch to ' + lang.toUpperCase()">
+          {{ lang.toUpperCase() }}
+        </button>
+      }
+    </div>
+  </nav>
+
+  <section class="app">
+    <header>
+      <picture>
+        <img src="./../assets/profile.jpg" alt="Foto de João Rafael Silva">
+      </picture>
+      <h1 class="app__heading">João Rafael Silva</h1>
+      <p class="app__text">
+        {{ i18n.t().bio.split('\n')[0] }}<br>
+        {{ i18n.t().bio.split('\n')[1] }}<br class="br--hide-mobile">
+        {{ i18n.t().working }} <a href="https://www.adp.com" target="_blank" rel="noopener noreferrer">ADP</a>,
+        <span class="app__contractor">{{ i18n.t().contractor }} <a href="https://zallpy.com/en" target="_blank" rel="noopener noreferrer">Zallpy</a></span>.
+      </p>
+    </header>
+    <main>
+      <section class="card-row" role="list">
+        <app-card role="listitem" [title]="i18n.t().cards.software" url="https://github.com/joao-rafael" imageUrl="./../assets/software.jpg"></app-card>
+        <app-card role="listitem" [title]="i18n.t().cards.blog" url="https://blog-joao-rafael.vercel.app/" imageUrl="./../assets/blog.jpg"></app-card>
+        <app-card role="listitem" [title]="i18n.t().cards.linkedin" url="https://www.linkedin.com/in/joao-rafael-silva/" imageUrl="./../assets/linkedin.jpg"></app-card>
+      </section>
+    </main>
+  </section>
+
+  <footer class="app-footer">
+    <span><em>Made</em>By<strong>Rafael</strong></span>
+  </footer>
+</main>

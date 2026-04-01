@@ -1,0 +1,67 @@
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+// ============================================
+// CORNER SVG ASSETS (fixed, outside wrapper)
+// ============================================
+.corner-svg {
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 90;
+  opacity: 0.9;
+
+  &.upper-left {
+    top: -60px;
+    left: -70px;
+    animation: floatUpDown 7s ease-in-out infinite;
+  }
+
+  &.upper-right {
+    top: -30px;
+    right: -50px;
+    animation: drift 10s ease-in-out infinite reverse;
+  }
+
+  &.bottom-left {
+    bottom: -60px;
+    left: -20px;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  &.bottom-right {
+    bottom: -70px;
+    right: -30px;
+    width: 260px;
+    height: 260px;
+    animation: floatBottomRight 11s ease-in-out infinite;
+  }
+}
+
+// ============================================
+// MOBILE BACKGROUND
+// ============================================
+.mobile-bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 100;
+  pointer-events: none;
+  background-color: #ffffff;
+  background-image: url('/assets/mobile.svg');
+  background-repeat: repeat-x;
+  background-size: auto 50px;
+  animation: scrollBgX 24s linear infinite;
+}
