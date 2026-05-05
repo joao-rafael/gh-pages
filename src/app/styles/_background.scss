@@ -18,7 +18,9 @@
   height: 200px;
   pointer-events: none;
   z-index: 90;
-  opacity: 0.9;
+  opacity: 0.84;
+  filter: brightness(0.94);
+  transition: filter 0.3s ease, opacity 0.3s ease;
 
   &.upper-left {
     top: -60px;
@@ -47,6 +49,14 @@
   }
 }
 
+// Dark mode adjustments for SVGs
+[data-color-mode="dark"] {
+  .corner-svg {
+    opacity: 0.34;
+    filter: brightness(0.6) invert(1);
+  }
+}
+
 // ============================================
 // MOBILE BACKGROUND
 // ============================================
@@ -59,9 +69,18 @@
   height: 50px;
   z-index: 100;
   pointer-events: none;
-  background-color: #ffffff;
+  background-color: var(--bg-primary);
   background-image: url('/assets/mobile.svg');
   background-repeat: repeat-x;
   background-size: auto 50px;
   animation: scrollBgX 24s linear infinite;
+  opacity: 0.92;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+[data-color-mode="dark"] {
+  .mobile-bg {
+    opacity: 0.66;
+    filter: invert(1) brightness(0.8);
+  }
 }

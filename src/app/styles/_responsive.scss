@@ -41,6 +41,18 @@
     }
   }
 
+  .theme-switcher {
+    position: absolute;
+    top: 66px;
+    right: 1rem;
+    left: auto;
+    transform: none;
+    width: auto;
+    max-width: none;
+    padding: 0;
+    z-index: 200;
+  }
+
   // ============================================
   // AJUSTES DE LAYOUT
   // ============================================
@@ -66,12 +78,21 @@
 
       .app__heading {
         font-size: 24px;
-        margin-bottom: 12px;
+        margin-bottom: 6px;
       }
     }
 
+    .app__role {
+      font-size: 12px;
+      line-height: 1.35;
+      margin-bottom: 14px;
+      max-width: 280px;
+      align-self: center;
+    }
+
     .app__text {
-      font-size: 18px;
+      font-size: 17px;
+      line-height: 1.55;
       margin-bottom: 20px;
       text-align: center;
 

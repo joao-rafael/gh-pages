@@ -25,21 +25,32 @@
     }
 
     .app__heading {
-      font-family: "Rubik", sans-serif;
+      font-family: "Rubik", "Inter", sans-serif;
       margin-top: 21px;
       font-weight: 800;
       font-size: 36px;
+      line-height: 1.05;
       color: var(--color-primary);
-      margin-bottom: 24px;
+      margin-bottom: 8px;
     }
   }
 
+  .app__role {
+    max-width: 520px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--text-secondary);
+    margin: 0 0 22px;
+  }
+
   .app__text {
-    font-size: 20px;
+    max-width: 860px;
+    font-size: 18px;
     font-weight: 400;
-    margin-bottom: 30px;
+    margin: 0 0 32px;
     text-decoration: none;
-    line-height: 1.6;
+    line-height: 1.58;
   }
 
   .app__contractor {
@@ -67,6 +78,66 @@
     text-decoration: none;
     color: var(--color-primary);
   }
+
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// ============================================
+// THEME SWITCHER
+// ============================================
+.theme-switcher {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  width: 100%;
+  max-width: 1080px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+
+  &__btn {
+    font-family: "Rubik", "Inter", sans-serif;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--card-bg) 70%, transparent);
+    color: var(--color-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: all;
+    transition: background-color 0.2s, color 0.2s, border-radius 0.2s;
+
+    &:hover {
+      border-radius: 16px;
+      background: var(--color-primary);
+      color: #ffffff;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+
+    svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
 }
 
 // ============================================
@@ -93,33 +164,33 @@
   }
 
   &__btn {
-    font-family: "Rubik", sans-serif;
-    font-size: 11px;
+    font-family: "Rubik", "Inter", sans-serif;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.08em;
     line-height: 1;
-    padding: 11px 14px;
-    border: 1.5px solid #cccccc;
-    border-radius: 4px;
-    background: #ffffff;
-    color: #aaaaaa;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 12px;
+    background: color-mix(in srgb, var(--card-bg) 70%, transparent);
+    color: var(--color-primary);
     cursor: pointer;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    transition: background-color 0.2s, color 0.2s, border-radius 0.2s;
 
     &--active {
       color: #ffffff;
-      border-color: var(--color-primary);
-      background: var(--color-primary);
+      background: color-mix(in srgb, var(--color-primary) 88%, transparent);
     }
 
     &:hover:not(.lang-switcher__btn--active) {
-      color: #666666;
-      border-color: #999999;
+      border-radius: 16px;
+      background: var(--color-primary);
+      color: #ffffff;
     }
 
     &:focus-visible {
       outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
+      outline-offset: 3px;
     }
   }
 }
@@ -133,7 +204,7 @@
   padding: 24px 0 16px;
   text-align: center;
   color: var(--color-primary);
-  font-family: "Rubik", sans-serif;
+  font-family: "Rubik", "Inter", sans-serif;
   font-size: 18px;
   white-space: nowrap;
 

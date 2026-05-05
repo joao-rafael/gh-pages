@@ -82,9 +82,9 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
     const H = () => this.canvasRef.nativeElement.height;
 
     const blobs = [
-      { x: 0.8, y: 0.1, r: 0.38, dx: 0.0003, dy: 0.00018, phase: 0,    opacity: 0.22 },
-      { x: 0.1, y: 0.8, r: 0.32, dx: -0.00022, dy: -0.0003, phase: 2,  opacity: 0.18 },
-      { x: 0.5, y: 0.45, r: 0.26, dx: 0.00015, dy: 0.00025, phase: 4,  opacity: 0.12 },
+      { x: 0.8, y: 0.1, r: 0.38, dx: 0.0003, dy: 0.00018, phase: 0,    opacity: 0.18 },
+      { x: 0.1, y: 0.8, r: 0.32, dx: -0.00022, dy: -0.0003, phase: 2,  opacity: 0.14 },
+      { x: 0.5, y: 0.45, r: 0.26, dx: 0.00015, dy: 0.00025, phase: 4,  opacity: 0.09 },
     ];
 
     let t = 0;
@@ -133,7 +133,7 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
       y: Math.random(),
       speed: 0.003 + Math.random() * 0.004,
       length: 0.06 + Math.random() * 0.09,
-      opacity: 0.12 + Math.random() * 0.2,
+      opacity: 0.07 + Math.random() * 0.12,
       width: 0.8 + Math.random() * 1.2,
     }));
 
@@ -143,7 +143,7 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
       y: Math.random(),
       speed: 0.001 + Math.random() * 0.002,
       length: 0.12 + Math.random() * 0.16,
-      opacity: 0.08 + Math.random() * 0.14,
+      opacity: 0.05 + Math.random() * 0.09,
       width: 2 + Math.random() * 3,
     }));
 
@@ -195,7 +195,7 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
       x: Math.random(),
       y: Math.random(),
       radius: 1 + Math.random() * 3,
-      opacity: 0.05 + Math.random() * 0.18,
+      opacity: 0.04 + Math.random() * 0.12,
       dx: (Math.random() - 0.5) * 0.0004,
       dy: (Math.random() - 0.5) * 0.0004,
       phase: Math.random() * Math.PI * 2,

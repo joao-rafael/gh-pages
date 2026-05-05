@@ -1,8 +1,8 @@
 .card {
   width: 100%;
-  border-radius: 14px;
-  border: 3px solid #D9D9D9;
-  transition: .3s ease;
+  border-radius: 12px;
+  border: 0;
+  transition: background-color .25s ease, border-radius .25s ease, color .25s ease;
   min-height: 160px;
   display: flex;
   flex-direction: column;
@@ -12,8 +12,8 @@
   outline-offset: 4px;
   box-sizing: border-box;
   overflow: hidden;
-  background: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06), 0 6px 18px rgba(0, 0, 0, 0.07);
+  background: var(--card-bg);
+  box-shadow: none;
 
   @media (max-width: 768px) {
     min-height: 68px;
@@ -22,18 +22,23 @@
 
   &:focus-visible {
     outline: 3px solid var(--color-primary);
-    border-color: var(--color-primary);
   }
 
   &:hover {
-    border-color: var(--color-primary);
+    border-radius: 18px;
+    background: var(--color-primary);
 
+    .card__content h2,
     .card__link {
-      color: var(--color-primary);
+      color: #ffffff;
     }
 
     .card__image-overlay {
-      opacity: 0.7;
+      opacity: var(--card-image-overlay-hover-opacity);
+    }
+
+    .card__link {
+      opacity: 1;
     }
   }
 
@@ -45,8 +50,7 @@
     background-position: center;
     position: relative;
     flex-shrink: 0;
-    border-bottom: 3px solid #D9D9D9;
-    transition: border-color .3s ease;
+    transition: opacity .3s ease;
 
     @media (max-width: 768px) {
       display: none;
@@ -58,15 +62,15 @@
     inset: 0;
     background: linear-gradient(
       135deg,
-      var(--gradient-main) 0%,
-      var(--gradient-secondary) 100%
+      color-mix(in srgb, var(--color-primary) 74%, #111111) 0%,
+      var(--color-primary) 100%
     );
-    opacity: 0.55;
+    opacity: var(--card-image-overlay-opacity);
     transition: opacity .3s ease;
-  }
 
-  &:hover .card__image {
-    border-bottom-color: var(--color-primary);
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
 
   // ── Linha inferior com título e ícone ──
@@ -82,15 +86,17 @@
   .card__content {
     h2 {
       margin: 0;
-      font-family: 'Rubik', sans-serif;
+      font-family: "Rubik", "Inter", sans-serif;
       color: var(--color-primary);
       font-size: 20px;
+      line-height: 1.15;
     }
   }
 
   .card__link {
     color: var(--color-primary);
-    transition: .3s ease;
+    opacity: 0.55;
+    transition: opacity .25s ease, color .25s ease;
     flex-shrink: 0;
     margin-left: 12px;
     display: flex;

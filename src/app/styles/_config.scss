@@ -3,6 +3,28 @@
   --gradient-main: rgba(45, 84, 223, 0.35);
   --gradient-secondary: rgba(45, 84, 223, 0.25);
   --gradient-tertiary: rgba(45, 84, 223, 0.08);
+  --card-bg: rgba(45, 84, 223, 0.1);
+  --card-bg-hover: rgba(45, 84, 223, 0.16);
+  --card-image-overlay-opacity: 0.18;
+  --card-image-overlay-hover-opacity: 0.3;
+
+  // Light mode (default)
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --border-color: #cccccc;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+// Dark mode
+[data-color-mode="dark"] {
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #e8e8e8;
+  --text-secondary: #999999;
+  --border-color: #444444;
+  --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
 // Blob 1: diagonal longa, atravessa a tela de canto a canto
