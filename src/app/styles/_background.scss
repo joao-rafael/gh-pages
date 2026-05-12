@@ -80,7 +80,8 @@
 
 [data-color-mode="dark"] {
   .mobile-bg {
-    opacity: 0.66;
-    filter: invert(1) brightness(0.8);
+    background-color: color-mix(in srgb, var(--bg-primary) 78%, transparent);
+    opacity: 0.72;
+    filter: none;
   }
 }

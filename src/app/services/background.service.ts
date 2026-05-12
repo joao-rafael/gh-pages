@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export type BackgroundEffect = 'blob' | 'rain' | 'particles';
 
@@ -6,10 +7,35 @@ export type BackgroundEffect = 'blob' | 'rain' | 'particles';
 export class BackgroundService {
   private readonly STORAGE_KEY = 'background-effect';
   private readonly effects: BackgroundEffect[] = ['blob', 'rain', 'particles'];
-  readonly selectedEffect: BackgroundEffect;
+  private selectedEffectSubject: BehaviorSubject<BackgroundEffect>;
+  readonly effect$: Observable<BackgroundEffect>;
 
   constructor() {
-    this.selectedEffect = this.getCurrentEffect();
+    this.selectedEffectSubject = new BehaviorSubject<BackgroundEffect>(this.getCurrentEffect());
+    this.effect$ = this.selectedEffectSubject.asObservable();
+  }
+
+  get selectedEffect(): BackgroundEffect {
+    return this.selectedEffectSubject.value;
+  }
+
+  randomizeEffect(): void {
+    const previousEffect = this.selectedEffectSubject.value;
+    let effect = this.getRandomEffect();
+
+    if (effect === previousEffect && this.effects.length > 1) {
+      effect = this.effects[(this.effects.indexOf(effect) + 1) % this.effects.length];
+    }
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(this.STORAGE_KEY, effect);
+    }
+
+    if (typeof document !== 'undefined') {
+      document.documentElement.setAttribute('data-background-effect', effect);
+    }
+
+    this.selectedEffectSubject.next(effect);
   }
 
   private getCurrentEffect(): BackgroundEffect {

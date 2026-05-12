@@ -9,70 +9,66 @@
 
 <main class="wrapper">
 
-  <nav class="lang-switcher" aria-label="Language selector">
-    <div class="lang-switcher__inner">
-      @for (lang of langs; track lang) {
+  <div class="top-controls">
+    <nav class="lang-switcher" [attr.aria-label]="i18n.t().controls.languageSelector">
+      <div class="lang-switcher__inner">
+        @for (lang of langs; track lang) {
+          <button
+            class="lang-switcher__btn"
+            [class.lang-switcher__btn--active]="i18n.activeLang() === lang"
+            (click)="setLang(lang)"
+            [attr.aria-pressed]="i18n.activeLang() === lang"
+            [attr.aria-label]="i18n.t().controls.switchLanguage.replace('{lang}', lang.toUpperCase())">
+            {{ lang.toUpperCase() }}
+          </button>
+        }
+      </div>
+    </nav>
+
+    <div class="color-switcher" [attr.aria-label]="i18n.t().controls.colorSelector">
+      @for (color of themeService.colors; track color.hex) {
         <button
-          class="lang-switcher__btn"
-          [class.lang-switcher__btn--active]="i18n.activeLang() === lang"
-          (click)="setLang(lang)"
-          [attr.aria-pressed]="i18n.activeLang() === lang"
-          [attr.aria-label]="'Switch to ' + lang.toUpperCase()">
-          {{ lang.toUpperCase() }}
+          class="color-switcher__btn"
+          type="button"
+          [style.--swatch-color]="color.hex"
+          [class.color-switcher__btn--active]="themeService.getCurrentTheme().primary === color.hex"
+          (click)="selectColor(color.hex)"
+          [attr.aria-label]="i18n.t().controls.useColorTheme">
         </button>
       }
     </div>
-  </nav>
 
-  <div class="theme-switcher">
-    <button
-      class="theme-switcher__btn"
-      (click)="toggleTheme()"
-      [attr.aria-label]="themeService.getColorMode() === 'light' ? 'Switch to dark theme' : 'Switch to light theme'">
-      @if (themeService.getColorMode() === 'light') {
-        <!-- Sun icon for light mode -->
-        <svg viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="5"></circle>
-          <line x1="12" y1="1" x2="12" y2="3"></line>
-          <line x1="12" y1="21" x2="12" y2="23"></line>
-          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-          <line x1="1" y1="12" x2="3" y2="12"></line>
-          <line x1="21" y1="12" x2="23" y2="12"></line>
-          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-        </svg>
-      } @else {
-        <!-- Moon icon for dark mode -->
-        <svg viewBox="0 0 24 24">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      }
-    </button>
+    <div class="theme-switcher">
+      <button
+        class="theme-switcher__btn"
+        (click)="toggleTheme()"
+        [attr.aria-label]="themeService.getColorMode() === 'light' ? i18n.t().controls.switchToDarkTheme : i18n.t().controls.switchToLightTheme">
+        @if (themeService.getColorMode() === 'light') {
+          <!-- Sun icon for light mode -->
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        } @else {
+          <!-- Moon icon for dark mode -->
+          <svg viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        }
+      </button>
+    </div>
   </div>
 
-  <section class="app">
-    <header>
-      <picture>
-        <img src="./../assets/profile.jpg" alt="Foto de João Rafael Silva">
-      </picture>
-      <h1 class="app__heading">João Rafael Silva</h1>
-      <p class="app__role">{{ i18n.t().role }}</p>
-      <p class="app__text">
-        {{ i18n.t().bio.split('\n')[0] }}<br>
-        {{ i18n.t().bio.split('\n')[1] }}<br class="br--hide-mobile">
-        {{ i18n.t().working }} <a href="https://www.adp.com" target="_blank" rel="noopener noreferrer">ADP</a>,
-        <span class="app__contractor">{{ i18n.t().contractor }} <a href="https://zallpy.com/en" target="_blank" rel="noopener noreferrer">Zallpy</a></span>.
-      </p>
-    </header>
-    <main>
-      <section class="card-row" role="list">
-        <app-card role="listitem" [title]="i18n.t().cards.software" url="https://github.com/joao-rafael" imageUrl="./../assets/software.jpg"></app-card>
-        <app-card role="listitem" [title]="i18n.t().cards.blog" url="https://codingbits.space" imageUrl="./../assets/blog.jpg"></app-card>
-        <app-card role="listitem" [title]="i18n.t().cards.linkedin" url="https://www.linkedin.com/in/joao-rafael-silva/" imageUrl="./../assets/linkedin.jpg"></app-card>
-      </section>
-    </main>
-  </section>
+  <div class="route-shell" [@routeFade]="prepareRoute(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
 
   <footer class="app-footer">
     <span><em>Made</em>By<strong>Rafael</strong></span>

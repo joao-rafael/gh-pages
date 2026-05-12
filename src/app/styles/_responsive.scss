@@ -18,46 +18,72 @@
     display: block;
   }
 
+  .top-controls {
+    position: static;
+    left: auto;
+    margin-top: 50px;
+    transform: none;
+    width: 100%;
+    max-width: none;
+    padding: 8px 1rem 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    z-index: auto;
+    background: transparent;
+    box-sizing: border-box;
+  }
+
   // ============================================
   // LANG SWITCHER — MOBILE (inline, no sticky)
   // ============================================
   .lang-switcher {
-    position: static;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    right: auto;
-    transform: none;
-    max-width: 100%;
-    padding: 8px 1rem 8px;
-    margin-top: 0;
-    display: flex;
-    justify-content: flex-start;
-    z-index: auto;
-    background: transparent;
-
     &__inner {
       justify-content: flex-start;
+      gap: 4px;
+    }
+
+    &__btn {
+      min-width: 30px;
+      height: 30px;
+      padding: 0 8px;
+      border-radius: 10px;
     }
   }
 
   .theme-switcher {
-    position: absolute;
-    top: 66px;
-    right: 1rem;
-    left: auto;
-    transform: none;
-    width: auto;
-    max-width: none;
-    padding: 0;
-    z-index: 200;
+    flex: 0 0 auto;
+
+    &__btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+    }
+  }
+
+  .color-switcher {
+    margin-left: auto;
+    gap: 5px;
+
+    &__btn {
+      width: 32px;
+      height: 24px;
+      border-radius: 7px;
+
+      &::before {
+        width: 12px;
+        height: 10px;
+        border-radius: 3px;
+      }
+    }
   }
 
   // ============================================
   // AJUSTES DE LAYOUT
   // ============================================
   .wrapper {
-    padding-top: 58px;
+    padding-top: 0;
 
     .app {
       position: relative;

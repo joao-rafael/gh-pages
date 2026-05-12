@@ -1,0 +1,62 @@
+<section class="app portfolio">
+  <header class="portfolio__header">
+    <a class="portfolio__back" routerLink="/" [attr.aria-label]="i18n.t().portfolio.back">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M19 12H5"></path>
+        <path d="M12 19l-7-7 7-7"></path>
+      </svg>
+      <span>{{ i18n.t().portfolio.back }}</span>
+    </a>
+    <h1 class="app__heading">{{ i18n.t().portfolio.title }}</h1>
+    <p class="app__text portfolio__intro">
+      {{ i18n.t().portfolio.intro }}
+    </p>
+    <p class="portfolio__disclaimer">
+      {{ i18n.t().portfolio.disclaimer }}
+    </p>
+  </header>
+
+  <main>
+    <div class="portfolio-filter" [attr.aria-label]="i18n.t().portfolio.filterAria">
+      @for (tag of filterTags; track tag) {
+        <button
+          type="button"
+          class="portfolio-filter__chip"
+          [class.portfolio-filter__chip--active]="isTagSelected(tag)"
+          (click)="selectTag(tag)">
+          {{ displayTag(tag) }}
+        </button>
+      }
+    </div>
+
+    <section class="portfolio-grid" [attr.aria-label]="i18n.t().portfolio.aria">
+      @for (project of filteredProjects; track project.link) {
+        <a class="project-card" [href]="project.link" target="_blank" rel="noopener noreferrer">
+          <div class="project-card__media">
+            <img [src]="project.imgLink" [alt]="project.projectName + ' logo'">
+          </div>
+
+          <div class="project-card__body">
+            <div class="project-card__title-row">
+              <h2>{{ project.projectName }}</h2>
+              <div class="project-card__tags" [attr.aria-label]="i18n.t().portfolio.tagsAria">
+                @for (tag of project.tags; track tag) {
+                  <span>{{ displayTag(tag) }}</span>
+                }
+              </div>
+              <p class="project-card__description">{{ projectDescription(project) }}</p>
+            </div>
+
+            <div class="project-card__link" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </div>
+          </div>
+        </a>
+      }
+    </section>
+  </main>
+</section>

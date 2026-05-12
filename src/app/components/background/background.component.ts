@@ -1,10 +1,11 @@
 import {
-  Component, OnInit, OnDestroy, ElementRef,
+  Component, OnDestroy, ElementRef,
   ViewChild, AfterViewInit, NgZone
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BackgroundService, BackgroundEffect } from '../../services/background.service';
 import { ThemeService } from '../../services/theme.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-background',
@@ -28,6 +29,7 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
   private animFrame!: number;
   private primaryColor = '#2D54DF';
   private effect: BackgroundEffect;
+  private effectSubscription?: Subscription;
 
   constructor(
     private bgService: BackgroundService,
@@ -41,10 +43,17 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
     this.primaryColor = this.themeService.getCurrentTheme().primary;
     this.initCanvas();
     this.ngZone.runOutsideAngular(() => this.startEffect());
+    this.effectSubscription = this.bgService.effect$.subscribe(effect => {
+      if (effect === this.effect) return;
+      this.effect = effect;
+      this.primaryColor = this.themeService.getCurrentTheme().primary;
+      this.restartEffect();
+    });
   }
 
   ngOnDestroy(): void {
     cancelAnimationFrame(this.animFrame);
+    this.effectSubscription?.unsubscribe();
   }
 
   private initCanvas(): void {
@@ -71,6 +80,12 @@ export class BackgroundComponent implements AfterViewInit, OnDestroy {
       case 'rain':      return this.runRain();
       case 'particles': return this.runParticles();
     }
+  }
+
+  private restartEffect(): void {
+    cancelAnimationFrame(this.animFrame);
+    this.ctx.clearRect(0, 0, this.canvasRef.nativeElement.width, this.canvasRef.nativeElement.height);
+    this.ngZone.runOutsideAngular(() => this.startEffect());
   }
 
   // ─────────────────────────────────────────────

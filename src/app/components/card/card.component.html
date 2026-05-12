@@ -1,5 +1,24 @@
-<a [href]="url" target="_blank" rel="noopener noreferrer" class="card" [attr.aria-label]="title + ' - abre em nova aba'">
+@if (isExternalUrl) {
+  <a
+    [href]="url"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="card"
+    [attr.aria-label]="ariaLabel">
 
+    <ng-container *ngTemplateOutlet="cardContent"></ng-container>
+  </a>
+} @else {
+  <a
+    [routerLink]="url"
+    class="card"
+    [attr.aria-label]="title">
+
+    <ng-container *ngTemplateOutlet="cardContent"></ng-container>
+  </a>
+}
+
+<ng-template #cardContent>
   <div class="card__image" *ngIf="imageUrl" [style.backgroundImage]="'url(' + imageUrl + ')'">
     <div class="card__image-overlay"></div>
   </div>
@@ -16,5 +35,4 @@
       </svg>
     </div>
   </div>
-
-</a>
+</ng-template>

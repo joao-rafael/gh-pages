@@ -1,0 +1,22 @@
+<section class="app">
+  <header>
+    <picture>
+      <img src="./../assets/profile.jpg" [alt]="i18n.t().profileAlt">
+    </picture>
+    <h1 class="app__heading">João Rafael Silva</h1>
+    <p class="app__role">{{ i18n.t().role }}</p>
+    <p class="app__text">
+      {{ i18n.t().bio.split('\n')[0] }}<br>
+      {{ i18n.t().bio.split('\n')[1] }}<br class="br--hide-mobile">
+      {{ i18n.t().working }} <a href="https://www.adp.com" target="_blank" rel="noopener noreferrer">ADP</a>,
+      <span class="app__contractor">{{ i18n.t().contractor }} <a href="https://zallpy.com/en" target="_blank" rel="noopener noreferrer">Zallpy</a></span>.
+    </p>
+  </header>
+  <main>
+    <section class="card-row" role="list">
+      <app-card role="listitem" [title]="i18n.t().cards.software" url="/portfolio" imageUrl="./../assets/software.jpg"></app-card>
+      <app-card role="listitem" [title]="i18n.t().cards.blog" url="https://codingbits.space" imageUrl="./../assets/blog.jpg"></app-card>
+      <app-card role="listitem" [title]="i18n.t().cards.linkedin" url="https://www.linkedin.com/in/joao-rafael-silva/" imageUrl="./../assets/linkedin.jpg"></app-card>
+    </section>
+  </main>
+</section>

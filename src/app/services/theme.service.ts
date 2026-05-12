@@ -22,7 +22,7 @@ interface RgbColor {
   providedIn: 'root'
 })
 export class ThemeService {
-  private readonly COLORS = [
+  readonly colors = [
     { hex: '#2D54DF', name: 'blue' },
     { hex: '#F2A245', name: 'orange' },
     { hex: '#D02121', name: 'red' },
@@ -58,6 +58,18 @@ export class ThemeService {
     this.updateColorMode(newMode);
   }
 
+  setAccentColor(hexColor: string): void {
+    if (!this.colors.some(color => color.hex === hexColor)) return;
+    const theme = this.buildThemeConfig(hexColor);
+    this.currentTheme$.next(theme);
+
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(this.ACCENT_STORAGE_KEY, hexColor);
+    }
+
+    this.applyTheme(theme);
+  }
+
   private getSavedColorMode(): ColorMode {
     if (typeof window === 'undefined') return 'light';
     const saved = localStorage.getItem(this.MODE_STORAGE_KEY) as ColorMode | null;
@@ -79,7 +91,7 @@ export class ThemeService {
   }
 
   private getRandomTheme(): ThemeConfig {
-    const randomColor = this.COLORS[Math.floor(Math.random() * this.COLORS.length)];
+    const randomColor = this.colors[Math.floor(Math.random() * this.colors.length)];
     if (typeof window !== 'undefined') {
       localStorage.setItem(this.ACCENT_STORAGE_KEY, randomColor.hex);
     }
@@ -89,7 +101,7 @@ export class ThemeService {
   private getSavedTheme(): ThemeConfig {
     if (typeof window === 'undefined') return this.getRandomTheme();
     const saved = localStorage.getItem(this.ACCENT_STORAGE_KEY);
-    const savedColor = this.COLORS.find(color => color.hex === saved);
+    const savedColor = this.colors.find(color => color.hex === saved);
     return savedColor ? this.buildThemeConfig(savedColor.hex) : this.getRandomTheme();
   }
 
