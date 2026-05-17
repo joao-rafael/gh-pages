@@ -45,12 +45,27 @@
   }
 
   .app__text {
-    max-width: 860px;
     font-size: 18px;
     font-weight: 400;
     margin: 0 0 32px;
     text-decoration: none;
     line-height: 1.58;
+
+    a {
+      font-weight: 800;
+      color: var(--color-primary);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+    }
   }
 
   .app__contractor {

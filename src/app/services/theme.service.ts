@@ -58,6 +58,10 @@ export class ThemeService {
     this.updateColorMode(newMode);
   }
 
+  syncTheme(): void {
+    this.updateColorMode(this.colorMode());
+  }
+
   setAccentColor(hexColor: string): void {
     if (!this.colors.some(color => color.hex === hexColor)) return;
     const theme = this.buildThemeConfig(hexColor);
@@ -86,6 +90,7 @@ export class ThemeService {
   private updateColorMode(mode: ColorMode): void {
     if (typeof document !== 'undefined') {
       document.documentElement.setAttribute('data-color-mode', mode);
+      document.body?.setAttribute('data-color-mode', mode);
       this.applyTheme(this.currentTheme$.value);
     }
   }
@@ -140,6 +145,8 @@ export class ThemeService {
   }
 
   private applyTheme(theme: ThemeConfig): void {
+    if (typeof document === 'undefined') return;
+
     const isDark = this.colorMode() === 'dark';
     const primaryRgb = this.hexToRgb(theme.primary);
     const pageBg = isDark ? '#0f0f0f' : '#ffffff';

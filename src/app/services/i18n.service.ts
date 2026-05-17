@@ -21,6 +21,8 @@ export interface Translations {
     back: string;
     title: string;
     intro: string;
+    githubText: string;
+    githubLabel: string;
     disclaimer: string;
     aria: string;
     filterAria: string;
@@ -31,8 +33,8 @@ export interface Translations {
       academic: string;
     };
   };
-  cards: {
-    software: string;
+    cards: {
+      software: string;
     blog: string;
     linkedin: string;
   };
@@ -58,6 +60,8 @@ const translations: Record<Lang, Translations> = {
       back: 'Home',
       title: 'Portfolio',
       intro: 'Some of my software projects and product work.',
+      githubText: 'More code and experiments at my',
+      githubLabel: 'GitHub profile',
       disclaimer: 'Projects tagged as Work are the property of their respective companies, with all rights reserved. I contributed to them while working with or for those companies.',
       aria: 'Software projects',
       filterAria: 'Project filters',
@@ -69,7 +73,7 @@ const translations: Record<Lang, Translations> = {
       },
     },
     cards: {
-      software: 'Software Projects',
+      software: 'Portfolio',
       blog: 'Blog',
       linkedin: 'LinkedIn',
     },
@@ -93,6 +97,8 @@ const translations: Record<Lang, Translations> = {
       back: 'Inicio',
       title: 'Portafolio',
       intro: 'Algunos de mis proyectos de software y trabajos de producto.',
+      githubText: 'Más código y experimentos están en mi',
+      githubLabel: 'perfil de GitHub',
       disclaimer: 'Los proyectos marcados como Trabajo son propiedad de sus respectivas empresas, con todos los derechos reservados. Colaboré en ellos mientras trabajaba con o para esas empresas.',
       aria: 'Proyectos de software',
       filterAria: 'Filtros de proyectos',
@@ -104,7 +110,7 @@ const translations: Record<Lang, Translations> = {
       },
     },
     cards: {
-      software: 'Proyectos de Software',
+      software: 'Portafolio',
       blog: 'Blog',
       linkedin: 'LinkedIn',
     },
@@ -128,6 +134,8 @@ const translations: Record<Lang, Translations> = {
       back: 'Início',
       title: 'Portfólio',
       intro: 'Alguns dos meus projetos de software e trabalhos de produto.',
+      githubText: 'Mais código, projetos e experimentos estão no meu',
+      githubLabel: 'perfil do GitHub',
       disclaimer: 'Projetos marcados como Trabalho são propriedade das suas respectivas empresas, com todos os direitos reservados. Eu colaborei neles enquanto trabalhava com ou para essas empresas.',
       aria: 'Projetos de software',
       filterAria: 'Filtros de projetos',
@@ -139,7 +147,7 @@ const translations: Record<Lang, Translations> = {
       },
     },
     cards: {
-      software: 'Projetos de Software',
+      software: 'Portfólio',
       blog: 'Blog',
       linkedin: 'LinkedIn',
     },

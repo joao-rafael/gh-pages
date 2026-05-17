@@ -5,6 +5,8 @@
   &__header {
     margin-top: 0;
     margin-bottom: 8px;
+    align-items: flex-start;
+    text-align: left;
   }
 
   &__back {
@@ -47,6 +49,11 @@
 
   &__intro {
     margin-bottom: 8px;
+    text-align: left;
+  }
+
+  &__github {
+    display: inline;
   }
 
   &__disclaimer {
@@ -236,12 +243,23 @@
 @media (max-width: 768px) {
   .portfolio {
     padding-top: 0;
+    text-align: left;
 
     &__header {
       margin-top: 20px;
       align-items: flex-start;
       text-align: left;
     }
+
+    &__intro {
+      font-size: 14px;
+      line-height: 1.45;
+      max-width: 100%!important;
+    }
+  }
+
+  .portfolio-filter {
+    justify-content: flex-start;
   }
 
   .portfolio-grid {
@@ -252,6 +270,7 @@
 
   .project-card {
     min-height: 0;
+    text-align: left;
 
     &__media {
       height: 120px;
