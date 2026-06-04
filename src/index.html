@@ -66,6 +66,15 @@
   </script>
   <script>
     (function () {
+      var redirect = sessionStorage.getItem('spa-github-pages-redirect');
+      if (!redirect) return;
+
+      sessionStorage.removeItem('spa-github-pages-redirect');
+      history.replaceState(null, '', redirect);
+    })();
+  </script>
+  <script>
+    (function () {
       var colors = ['#2D54DF', '#F2A245', '#D02121', '#188F24'];
       var effects = ['blob', 'rain', 'particles'];
       var modeKey = 'theme-mode';
